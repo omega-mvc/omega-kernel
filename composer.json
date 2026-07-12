@@ -1,0 +1,109 @@
+{
+    "name": "omega-mvc/omega-kernel",
+    "type": "library",
+    "description": "",
+    "keywords": [
+    	"lightweight",
+    	"php",
+    	"modular",
+    	"framework",
+    	"web-development",
+    	"mvc",
+    	"php8"
+    ],
+    "homepage": "https://omega-mvc.github.io",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Adriano Giovannini",
+            "email": "agisoftt@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "ext-iconv": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-pcntl": "*",
+        "ext-pdo": "*",
+        "ext-posix": "*",
+        "ext-readline": "*",
+        "ext-simplexml": "*",
+        "omega-mvc/serializable-closure":  "^2.0.0",
+        "omega-mvc/validator": "^2.0.0",
+        "psr/container": "^2.0",
+        "psr/simple-cache": "^3.0",
+        "symfony/console": "^v8.0.7",
+        "symfony/finder": "^v8.0.8",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0",
+        "phpunit/phpunit": "^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omega\\": "src/Omega/"
+        },
+        "files": [
+            "src/Omega/Application/helper.php",
+            "src/Omega/Collection/helper.php",
+            "src/Omega/Environment/helper.php",
+            "src/Omega/Http/helper.php",
+            "src/Omega/Text/helper.php",
+            "src/Omega/Time/helper.php",
+            "src/Omega/View/helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/Tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs --standard=PSR12 src/ tests/",
+        "lint": "composer run phpcs",
+        "phpcbf": "vendor/bin/phpcbf --standard=PSR12 src/ tests/",
+        "fix": "composer run phpcbf",
+        "test:phpunit": "vendor/bin/phpunit tests",
+        "test:facade": "php ./bin/facade.php facade:update --from-file /resources/facades.php --debug --dry-run",
+        "test:facade:update": "php ./bin/facade.php facade:update --from-file /resources/facades.php --debug",
+        "test:dev": [
+            "@test:facade"
+        ],
+        "test": [
+            "composer run lint",
+            "composer run test:phpunit",
+            "composer run test:facade"
+        ],
+        "check": "composer run test",
+        "ci": [
+            "composer run fix",
+            "composer run test"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "suggest": {
+        "ext-apache": "If you want to use apache extension",
+        "ext-apcu": "If you want to use APCu for faster in-memory caching",
+        "ext-memcached": "If you want to use Memcached as a cache backend",
+        "ext-redis": "If you want to use Redis as a cache backend or for session storage",
+        "ext-http": "If you want to use HTTP extension features"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "pestphp/pest-plugin": true
+        }
+    }
+}
