@@ -1,6 +1,7 @@
 {
     "name": "omega-mvc/omega-kernel",
     "type": "library",
+    "version": "1.0.1",
     "description": "",
     "keywords": [
     	"lightweight",
