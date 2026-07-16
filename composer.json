@@ -2,7 +2,7 @@
     "name": "omega-mvc/omega-kernel",
     "type": "library",
     "version": "1.0.1",
-    "description": "",
+    "description": "The foundation layer of the Omega ecosystem, containing framework-independent components, contracts, and services required to build standalone applications and integrations.",
     "keywords": [
     	"lightweight",
     	"php",
