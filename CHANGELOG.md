@@ -12,14 +12,14 @@ This project follows Semantic Versioning.
 
 - Initial release of the Omega Kernel package.
 
+## [1.0.1] - 2026-07-16
+
+### Added
+
+- Added the Container package.
+- Added the Config package.
+- Added the Environment package.
+
 ### Changed
 
-- None.
-
-### Fixed
-
-- None.
-
-### Removed
-
-- None.
+- Refactored the Application component by separating the abstract application lifecycle from framework-specific implementations.
